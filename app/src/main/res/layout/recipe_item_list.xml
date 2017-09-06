@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorAccent"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/recipe_item_list_layout_height"
+    android:paddingTop="@dimen/activity_margin_16dp"
+    android:elevation="@dimen/recipe_item_list_elevation"
+    android:layout_marginBottom="@dimen/recipe_card_vertical_margin"
+    android:layout_marginTop="@dimen/recipe_card_vertical_margin"
+    android:layout_marginLeft="@dimen/recipe_card_horizontal_margin"
+    android:layout_marginRight="@dimen/recipe_card_horizontal_margin"
+    app:cardCornerRadius="@dimen/recipe_item_list_corner_radius">
+
+    <TextView
+        android:id="@+id/tv_recipe_title"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        tools:text="@string/recipe_title" />
+
+</android.support.v7.widget.CardView>

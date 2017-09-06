@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/video_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/video_fragment_height"
+        android:layout_weight="@integer/video_fragment_weight"
+        tools:layout="@layout/fragment_step_detail"/>
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/step_description_height"
+        android:layout_marginBottom="@dimen/step_description_vertical_margin"
+        android:layout_marginTop="@dimen/step_description_vertical_margin"
+        android:layout_marginLeft="@dimen/step_description_horizontal_margin"
+        android:layout_marginRight="@dimen/step_description_horizontal_margin"
+        android:layout_weight="@integer/video_fragment_weight"
+        android:textSize="@dimen/widget_recipe_text_size"
+        tools:text="@string/test_step_description_text" />
+
+</LinearLayout>

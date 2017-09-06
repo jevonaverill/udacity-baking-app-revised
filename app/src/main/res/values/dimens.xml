@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="widget_recipe_text_size">16sp</dimen>
+    <dimen name="widget_ingredient_text_size">12sp</dimen>
+
+    <dimen name="step_item_list_margin_top_bottom">22dp</dimen>
+
+    <dimen name="recycler_view_recipe_layout_width">0dp</dimen>
+    <dimen name="recycler_view_recipe_layout_height">0dp</dimen>
+
+    <dimen name="recipe_item_list_layout_height">72dp</dimen>
+    <dimen name="recipe_item_list_elevation">2dp</dimen>
+    <dimen name="recipe_item_list_corner_radius">2dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="activity_margin_8dp">8dp</dimen>
+    <dimen name="activity_margin_16dp">16dp</dimen>
+
+    <dimen name="toolbar_width">0dp</dimen>
+
+    <dimen name="list_fragment_width">0dp</dimen>
+    <dimen name="list_fragment_height">0dp</dimen>
+    <dimen name="detail_fragment_width">0dp</dimen>
+    <dimen name="detail_fragment_height">0dp</dimen>
+
+    <dimen name="video_fragment_height">0dp</dimen>
+    <integer name="video_fragment_weight">1</integer>
+
+    <dimen name="step_description_height">0dp</dimen>
+    <dimen name="step_description_vertical_margin">8dp</dimen>
+    <dimen name="step_description_horizontal_margin">16dp</dimen>
+
+    <dimen name="recipe_card_horizontal_margin">4dp</dimen>
+    <dimen name="recipe_card_vertical_margin">4dp</dimen>
+
+    <dimen name="step_text_width">0dp</dimen>
+    <dimen name="step_text_keyline">72dp</dimen>
+    <dimen name="step_text_horizontal_margin">16dp</dimen>
+    <dimen name="step_icon_size">48dp</dimen>
+    <dimen name="step_icon_margin">16dp</dimen>
+
+    <dimen name="widget_margin">8dp</dimen>
+</resources>
