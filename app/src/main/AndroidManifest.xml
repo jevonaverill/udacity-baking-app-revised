@@ -28,18 +28,18 @@
         </activity>
         <activity
             android:name=".RecipeStepActivity"
+            android:label="@string/title_activity_recipe_step"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <receiver
-            android:name=".RecipesInfoWidgetProvider">
+            android:name=".provider.RecipesInfoWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/ingredients_widget_provider_info"/>
+                android:resource="@xml/recipes_info_widget_provider"/>
         </receiver>
     </application>
 

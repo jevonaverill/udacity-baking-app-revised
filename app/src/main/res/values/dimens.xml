@@ -31,6 +31,8 @@
     <dimen name="step_description_vertical_margin">8dp</dimen>
     <dimen name="step_description_horizontal_margin">16dp</dimen>
 
+    <integer name="recipe_detail_layout_weight_fragment_master_list">1</integer>
+    <integer name="recipe_detail_layout_weight_fragment_container">2</integer>
     <dimen name="recipe_card_horizontal_margin">4dp</dimen>
     <dimen name="recipe_card_vertical_margin">4dp</dimen>
 
@@ -41,4 +43,5 @@
     <dimen name="step_icon_margin">16dp</dimen>
 
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="widget_min_height_width">110dp</dimen>
 </resources>

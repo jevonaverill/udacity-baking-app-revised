@@ -19,6 +19,7 @@
 
     <Button
         android:id="@+id/btn_prev_step"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/previous"
@@ -29,6 +30,7 @@
 
     <Button
         android:id="@+id/btn_add_to_widget"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_to_widget"
@@ -40,6 +42,7 @@
 
     <Button
         android:id="@+id/btn_next_step"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
