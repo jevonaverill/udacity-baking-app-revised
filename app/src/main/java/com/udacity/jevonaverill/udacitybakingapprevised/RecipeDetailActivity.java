@@ -65,7 +65,6 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
         ButterKnife.bind(this);
         mToolbar.setTitle(mRecipe.getName());
         setActionBar(mToolbar);
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
         isTwoPaneView = (null != findViewById(R.id.detail_container_fragment));
         if (isTwoPaneView) showStepDetails();
     }
@@ -93,7 +92,6 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
         if (isTwoPaneView) showStepDetails();
         else {
             Intent intent = new Intent(this, RecipeStepActivity.class);
-
             intent.putExtra(STEP_RECIPE_KEY, mRecipe);
             intent.putExtra(STEP_POSITION_KEY, selectedIndex);
             startActivity(intent);

@@ -1,6 +1,9 @@
 package com.udacity.jevonaverill.udacitybakingapprevised.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -74,6 +77,14 @@ public final class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.Reci
                 Picasso.with(itemView.getContext())
                         .load(recipe.getImage())
                         .into(recipeImage);
+            } else {
+                for (int i = 0; i < recipe.getSteps().size(); i++) {
+                    Picasso.with(itemView.getContext())
+                            .load(String.valueOf(ThumbnailUtils.createVideoThumbnail(
+                                    recipe.getSteps().get(i).getThumbnailUrl(),
+                                    MediaStore.Video.Thumbnails.MINI_KIND)))
+                            .into(recipeImage);
+                }
             }
             this.listener = recipeClickListener;
         }
