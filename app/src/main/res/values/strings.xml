@@ -8,6 +8,7 @@
     <string name="key_step_description">com.udacity.jevonaverill.udacitybakingapprevised.RecipeDetailActivity.STEP_DESCRIPTION</string>
     <string name="key_step_has_video">com.udacity.jevonaverill.udacitybakingapprevised.RecipeDetailActivity.STEP_HAS_VIDEO</string>
     <string name="key_step_url">com.udacity.jevonaverill.udacitybakingapprevised.RecipeDetailActivity.STEP_URL</string>
+    <string name="key_step_image_url">com.udacity.jevonaverill.udacitybakingapprevised.RecipeDetailActivity.STEP_IMAGE_URL</string>
 
     <string name="short_description">Short description about this step</string>
     <string name="step_number">Step #1</string>

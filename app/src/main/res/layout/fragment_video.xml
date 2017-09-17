@@ -10,5 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:resize_mode="fit" />
+    
+    <ImageView
+        android:id="@+id/step_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:visibility="gone" />
 
 </LinearLayout>

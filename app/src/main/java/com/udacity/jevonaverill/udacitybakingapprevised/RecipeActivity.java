@@ -58,6 +58,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeAdapter.R
 
     private void loadRecipes() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(getString(R.string.base_recipe_url))
                 .addConverterFactory(GsonConverterFactory.create())

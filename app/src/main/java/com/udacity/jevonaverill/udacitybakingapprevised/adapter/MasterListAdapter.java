@@ -48,7 +48,6 @@ public final class MasterListAdapter extends RecyclerView.Adapter<MasterListAdap
         String shortDescription = mStepList.get(position).getShortDescription();
         String stepNumber = (position == 0) ? "Ingredients" : "Step# " + position;
         holder.bind(stepNumber, shortDescription);
-
     }
 
     @Override

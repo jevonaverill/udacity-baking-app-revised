@@ -3,12 +3,17 @@ package com.udacity.jevonaverill.udacitybakingapprevised.fragment;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -20,6 +25,7 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 import com.udacity.jevonaverill.udacitybakingapprevised.R;
 
 import butterknife.BindString;
@@ -36,21 +42,32 @@ public class VideoFragment extends Fragment {
     @BindView(R.id.exoplayer_view)
     SimpleExoPlayerView mPlayerView;
 
+    @BindView(R.id.step_image)
+    ImageView stepImage;
+
     @BindString(R.string.key_step_url)
     String STEP_URL;
+    @BindString(R.string.key_step_image_url)
+    String STEP_IMAGE_URL;
 
     SimpleExoPlayer mPlayer;
     Bundle args;
     private Unbinder mUnbinder;
     private String videoUrl;
+    private String imageUrl;
     private long playbackPosition;
     private int currentWindow;
     private boolean playWhenReady = false;
+    private static long position;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         args = getArguments();
+        if (savedInstanceState != null) {
+            position = savedInstanceState.getLong("playbackPosition", C.TIME_UNSET);
+        }
     }
 
     @Override
@@ -58,7 +75,15 @@ public class VideoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         mUnbinder = ButterKnife.bind(this, rootView);
         videoUrl = args.getString(STEP_URL);
+        imageUrl = args.getString(STEP_IMAGE_URL);
         return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("playbackPosition", playbackPosition);
+        position = playbackPosition;
     }
 
     @Override
@@ -67,6 +92,7 @@ public class VideoFragment extends Fragment {
         if (Util.SDK_INT > 23) initializePlayer();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onResume() {
         super.onResume();
@@ -84,7 +110,6 @@ public class VideoFragment extends Fragment {
     public void onStop() {
         super.onStop();
         if (Util.SDK_INT > 23 || mPlayer == null) releasePlayer();
-
     }
 
     @Override
@@ -103,20 +128,34 @@ public class VideoFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void initializePlayer() {
         mPlayer = ExoPlayerFactory.newSimpleInstance(
                 new DefaultRenderersFactory(getContext()),
                 new DefaultTrackSelector(),
                 new DefaultLoadControl()
         );
-
-        mPlayerView.setPlayer(mPlayer);
-        mPlayer.setPlayWhenReady(playWhenReady);
-        mPlayer.seekTo(currentWindow, playbackPosition);
-
-        Uri uri = Uri.parse(videoUrl);
-        MediaSource mediaSource = buildMediaSource(uri);
-        mPlayer.prepare(mediaSource, true, false);
+        if (!TextUtils.isEmpty(videoUrl)) {
+            stepImage.setVisibility(View.GONE);
+            mPlayerView.setPlayer(mPlayer);
+            mPlayerView.setVisibility(View.VISIBLE);
+            mPlayer.setPlayWhenReady(playWhenReady);
+            if (position != 0L && position != C.TIME_UNSET) {
+                mPlayer.seekTo(currentWindow, position);
+            } else {
+                mPlayer.seekTo(currentWindow, playbackPosition);
+            }
+            Uri uri = Uri.parse(videoUrl);
+            MediaSource mediaSource = buildMediaSource(uri);
+            mPlayer.prepare(mediaSource, true, false);
+        } else if (!TextUtils.isEmpty(imageUrl)) {
+            mPlayerView.setVisibility(View.GONE);
+            Picasso.with(getContext()).load(imageUrl).into(stepImage);
+            stepImage.setVisibility(View.VISIBLE);
+        } else {
+            mPlayerView.setVisibility(View.GONE);
+            stepImage.setVisibility(View.GONE);
+        }
     }
 
     @SuppressLint("InlinedApi")

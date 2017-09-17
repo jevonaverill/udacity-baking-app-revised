@@ -23,13 +23,15 @@ public class RecipesInfoWidgetProvider extends AppWidgetProvider {
     private static final String DEFAULT_INGREDIENTS = "Select a recipe to display";
     private static final String DEFAULT_RECIPE = "No recipe selected";
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-
-        SharedPreferences sharedPrefs = context.getSharedPreferences(WIDGET_PREFERENCES, Context.MODE_PRIVATE);
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                int appWidgetId) {
+        SharedPreferences sharedPrefs = context.getSharedPreferences(WIDGET_PREFERENCES,
+                Context.MODE_PRIVATE);
         String recipe = sharedPrefs.getString(PREFERENCE_RECIPE, DEFAULT_RECIPE);
         String ingredients = sharedPrefs.getString(PREFERENCE_INGREDIENTS, DEFAULT_INGREDIENTS);
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_recipe_info_provider);
+        RemoteViews views = new RemoteViews(context.getPackageName(),
+                R.layout.widget_recipe_info_provider);
         views.setTextViewText(R.id.tv_widget_recipe, recipe);
         views.setTextViewText(R.id.tv_widget_ingredients, ingredients);
 
@@ -51,6 +53,11 @@ public class RecipesInfoWidgetProvider extends AppWidgetProvider {
     }
 
     @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+    }
+
+    @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
     }
@@ -59,5 +66,4 @@ public class RecipesInfoWidgetProvider extends AppWidgetProvider {
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-
 }

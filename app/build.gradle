@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.udacity.jevonaverill.udacitybakingapprevised"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -27,13 +27,13 @@ ext {
     butterknifeVersion = '8.8.1'
     okhttpVersion = '3.8.1'
     retrofitVersion = '2.3.0'
+    espressoVersion = '2.2.2'
+    runnerRulesVersion = '0.5'
+    picassoVersion = '2.5.2'
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
 
     // com.android.support
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
@@ -55,8 +55,23 @@ dependencies {
 
     // com.squareup
     compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile "com.squareup.picasso:picasso:$picassoVersion"
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     testCompile 'junit:junit:4.12'
+
+    // Testing-only dependencies
+    androidTestCompile "com.android.support:support-annotations:$supportLibraryVersion"
+
+    androidTestCompile "com.android.support.test:runner:$runnerRulesVersion"
+    androidTestCompile "com.android.support.test:rules:$runnerRulesVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$espressoVersion") {
+        exclude module: 'support-aannotations'
+        exclude module: 'support-v4'
+        exclude module: 'design'
+        exclude module: 'recyclerview-v7'
+    }
 }

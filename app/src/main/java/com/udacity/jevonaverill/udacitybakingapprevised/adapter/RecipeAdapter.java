@@ -2,11 +2,14 @@ package com.udacity.jevonaverill.udacitybakingapprevised.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.udacity.jevonaverill.udacitybakingapprevised.R;
 import com.udacity.jevonaverill.udacitybakingapprevised.model.Recipe;
 
@@ -39,7 +42,7 @@ public final class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.Reci
 
     @Override
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
-        holder.bind(mRecipeList.get(position).getName(), mRecipeClickListener);
+        holder.bind(mRecipeList.get(position), mRecipeClickListener);
     }
 
     @Override
@@ -54,6 +57,9 @@ public final class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.Reci
     class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.tv_recipe_title)
         TextView recipeTitle;
+        @BindView(R.id.recipe_image)
+        ImageView recipeImage;
+
         RecipeClickListener listener;
 
         public RecipeViewHolder(View itemView) {
@@ -62,8 +68,13 @@ public final class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.Reci
             itemView.setOnClickListener(this);
         }
 
-        void bind(String title, RecipeClickListener recipeClickListener) {
-            recipeTitle.setText(title);
+        void bind(final Recipe recipe, RecipeClickListener recipeClickListener) {
+            recipeTitle.setText(recipe.getName());
+            if (TextUtils.isEmpty(recipe.getImage()) == false) {
+                Picasso.with(itemView.getContext())
+                        .load(recipe.getImage())
+                        .into(recipeImage);
+            }
             this.listener = recipeClickListener;
         }
 

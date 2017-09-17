@@ -20,6 +20,12 @@ public class Recipe implements Serializable {
     @SerializedName("steps")
     private List<Step> steps;
 
+    @SerializedName("servings")
+    private int servings;
+
+    @SerializedName("image")
+    private String image;
+
     public Recipe() {
     }
 
@@ -55,6 +61,22 @@ public class Recipe implements Serializable {
         this.steps = steps;
     }
 
+    public int getServings() {
+        return servings;
+    }
+
+    public void setServings(int servings) {
+        this.servings = servings;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -72,6 +94,8 @@ public class Recipe implements Serializable {
                 ", \n\tname='" + name + '\'' +
                 ", \n\tingredients=" + ingredients.toString() +
                 ", \n\tsteps=" + steps.toString() +
+                ", \n\tservings=" + servings +
+                ", \n\timage=" + image +
                 '}';
     }
 

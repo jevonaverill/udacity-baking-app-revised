@@ -52,7 +52,8 @@ public class StepDetailFragment extends Fragment {
         description = args.getString(STEP_DESCRIPTION);
         stepHasVideo = args.getBoolean(STEP_HAS_VIDEO);
 
-        boolean orientationIsPortrait = this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+        boolean orientationIsPortrait = this.getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_PORTRAIT;
         Log.d(TAG, "onCreateView: orientationIsPortrait = " + orientationIsPortrait);
 
         if (!orientationIsPortrait && stepHasVideo) {
@@ -60,7 +61,6 @@ public class StepDetailFragment extends Fragment {
         } else {
             descriptionTextView.setText(description);
         }
-
 
         return rootView;
     }

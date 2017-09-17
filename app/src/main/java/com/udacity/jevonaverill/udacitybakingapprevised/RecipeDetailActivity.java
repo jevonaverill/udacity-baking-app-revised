@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toolbar;
 
 import com.udacity.jevonaverill.udacitybakingapprevised.adapter.MasterListAdapter;
@@ -38,6 +40,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
     String STEP_DESCRIPTION;
     @BindString(R.string.key_step_url)
     String STEP_URL;
+    @BindString(R.string.key_step_image_url)
+    String STEP_IMAGE_URL;
 
     @BindView(R.id.toolbar_main)
     Toolbar mToolbar;
@@ -61,8 +65,19 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
         ButterKnife.bind(this);
         mToolbar.setTitle(mRecipe.getName());
         setActionBar(mToolbar);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
         isTwoPaneView = (null != findViewById(R.id.detail_container_fragment));
         if (isTwoPaneView) showStepDetails();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -96,6 +111,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
 
         args.putString(STEP_DESCRIPTION, description);
         args.putString(STEP_URL, step.getVideoUrl());
+        args.putString(STEP_IMAGE_URL, step.getThumbnailUrl());
 
         StepDetailFragment detailFragment = new StepDetailFragment();
         detailFragment.setArguments(args);
@@ -103,14 +119,11 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
                 .replace(R.id.detail_container_fragment, detailFragment)
                 .commit();
 
-        // SHOW the FrameLayout if it's currently NOT VISIBLE
-        if (!step.getVideoUrl().equals("")) {
-            VideoFragment playerFragment = new VideoFragment();
-            playerFragment.setArguments(args);
-            fragmentMgr.beginTransaction()
-                    .replace(R.id.video_fragment_container, playerFragment)
-                    .commit();
-        }
+        VideoFragment playerFragment = new VideoFragment();
+        playerFragment.setArguments(args);
+        fragmentMgr.beginTransaction()
+                .replace(R.id.video_fragment_container, playerFragment)
+                .commit();
     }
 
     public Recipe getSelectedRecipe() {

@@ -13,6 +13,13 @@
     android:paddingTop="@dimen/activity_margin_16dp"
     app:cardCornerRadius="@dimen/recipe_item_list_corner_radius">
 
+    <ImageView
+        android:id="@+id/recipe_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/recipe_placeholder" />
+
     <TextView
         android:id="@+id/tv_recipe_title"
         style="@style/TextAppearance.AppCompat.Title"
