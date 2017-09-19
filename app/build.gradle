@@ -59,6 +59,8 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
+    compile "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
+
     testCompile 'junit:junit:4.12'
 
     // Testing-only dependencies
@@ -70,6 +72,8 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-contrib:$espressoVersion") {
         exclude module: 'support-aannotations'
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'support-v4'
         exclude module: 'design'
         exclude module: 'recyclerview-v7'

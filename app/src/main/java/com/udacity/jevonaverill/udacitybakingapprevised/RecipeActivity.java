@@ -3,12 +3,17 @@ package com.udacity.jevonaverill.udacitybakingapprevised;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toolbar;
 
+import com.udacity.jevonaverill.udacitybakingapprevised.IdlingResource.SimpleIdlingResource;
 import com.udacity.jevonaverill.udacitybakingapprevised.adapter.RecipeAdapter;
 import com.udacity.jevonaverill.udacitybakingapprevised.model.Recipe;
 import com.udacity.jevonaverill.udacitybakingapprevised.service.RecipesService;
@@ -38,6 +43,21 @@ public class RecipeActivity extends AppCompatActivity implements RecipeAdapter.R
 
     private RecipeAdapter mRecipeAdapter;
     private List<Recipe> mRecipeList;
+
+    @Nullable
+    private SimpleIdlingResource mIdlingResource;
+
+    /**
+     * Only called from test, creates and returns a new {@link SimpleIdlingResource}.
+     */
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
