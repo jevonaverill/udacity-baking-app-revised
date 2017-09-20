@@ -77,7 +77,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+//                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -100,6 +101,12 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
             intent.putExtra(STEP_POSITION_KEY, selectedIndex);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Execute your code here
+        finish();
     }
 
     private void showStepDetails() {

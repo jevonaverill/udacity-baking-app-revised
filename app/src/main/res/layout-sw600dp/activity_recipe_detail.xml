@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
+    <include layout="@layout/toolbar" />
+
     <fragment
         android:id="@+id/master_list_fragment"
         android:name="com.udacity.jevonaverill.udacitybakingapprevised.fragment.MasterListFragment"
