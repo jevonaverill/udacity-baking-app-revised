@@ -61,6 +61,15 @@ public class RecipeActivityTest {
                 .check(matches(withText(TOOLBAR_TEXT)));
     }
 
+    @Test public void clickingRecipeShowsIngredientsAndSteps() {
+        // Click on the first Recipe card found in the RecyclerView
+        onView(withId(R.id.rv_recipes))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+
+        // Check the the master_list_fragment is displayed
+        onView(withId(R.id.master_list_fragment)).check(matches(isDisplayed()));
+    }
+
     @After
     public void unregisterIdlingResources() {
         if (mIdlingResource != null) {

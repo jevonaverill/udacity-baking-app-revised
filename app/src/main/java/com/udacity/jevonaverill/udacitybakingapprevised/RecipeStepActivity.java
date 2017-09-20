@@ -100,7 +100,6 @@ public class RecipeStepActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Execute your code here
         finish();
     }
 
@@ -154,7 +153,7 @@ public class RecipeStepActivity extends AppCompatActivity {
         boolean stepHasVideo = !mRecipe.getSteps().get(stepPosition).getVideoUrl().equals("");
 
         if (orientationIsPortrait || !stepHasVideo) {
-            // Show/Hide previous Button
+            // Show/Hide previous button
             if (stepPosition == 0) {
                 prevButton.setVisibility(View.INVISIBLE);
                 widgetButton.setVisibility(View.VISIBLE);
@@ -162,7 +161,7 @@ public class RecipeStepActivity extends AppCompatActivity {
                 prevButton.setVisibility(View.VISIBLE);
                 widgetButton.setVisibility(View.INVISIBLE);
             }
-            // Show/Hide next Button
+            // Show/Hide next button
             if (stepPosition + 1 == mRecipe.getSteps().size())
                 nextButton.setVisibility(View.INVISIBLE);
             else nextButton.setVisibility(View.VISIBLE);

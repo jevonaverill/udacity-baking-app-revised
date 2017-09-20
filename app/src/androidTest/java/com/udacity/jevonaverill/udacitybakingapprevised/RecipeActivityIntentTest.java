@@ -35,6 +35,8 @@ import static org.hamcrest.core.IsNot.not;
  */
 @RunWith(AndroidJUnit4.class)
 public class RecipeActivityIntentTest {
+    private static String PACKAGE_DETAIL_ACTIVITY = "com.udacity.jevonaverill.udacitybakingapprevised";
+
     @Rule
     public IntentsTestRule<RecipeActivity> mIntentRule = new IntentsTestRule<>(RecipeActivity.class);
 
@@ -59,6 +61,15 @@ public class RecipeActivityIntentTest {
     public void checkIntent_RecipeDetailActivity() {
         onView(withId(R.id.rv_recipes))
                 .check(matches((withResourceName("rv_recipes"))));
+    }
+
+    @Test public void intentToCorrectPackage() {
+        // Click on the first Recipe card found in the RecyclerView
+        onView(withId(R.id.rv_recipes))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+
+        // Verify an intent was sent to the package containing DetailActivity
+        intended(toPackage(PACKAGE_DETAIL_ACTIVITY));
     }
 
     @After
