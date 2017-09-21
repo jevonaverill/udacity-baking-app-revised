@@ -10,13 +10,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.udacity.jevonaverill.udacitybakingapprevised.adapter.MasterListAdapter;
 import com.udacity.jevonaverill.udacitybakingapprevised.fragment.StepDetailFragment;
@@ -77,8 +76,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
         setContentView(R.layout.activity_recipe_detail);
         ButterKnife.bind(this);
         mToolbar.setTitle(mRecipe.getName());
-        setActionBar(mToolbar);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         isTwoPaneView = (null != findViewById(R.id.detail_container_fragment));
         if (isTwoPaneView) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -104,7 +103,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
         if (selectedIndex > 0) outState.putInt(STEP_POSITION_KEY, selectedIndex);
     }
 
-    @Override public void onStepClick(int position) {
+    @Override
+    public void onStepClick(int position) {
         selectedIndex = position;
         if (isTwoPaneView) showStepDetails();
         else {
@@ -113,11 +113,6 @@ public class RecipeDetailActivity extends AppCompatActivity implements MasterLis
             intent.putExtra(STEP_POSITION_KEY, selectedIndex);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
     }
 
     private void showStepDetails() {

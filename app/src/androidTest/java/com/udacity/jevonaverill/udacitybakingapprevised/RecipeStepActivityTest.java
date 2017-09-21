@@ -27,9 +27,11 @@ import static org.hamcrest.core.IsNot.not;
 @RunWith(AndroidJUnit4.class)
 public class RecipeStepActivityTest {
 
-    @Rule public ActivityTestRule<RecipeActivity> mActivityRule = new ActivityTestRule<>(RecipeActivity.class);
+    @Rule
+    public ActivityTestRule<RecipeActivity> mActivityRule = new ActivityTestRule<>(RecipeActivity.class);
 
-    @Test public void clickingFirstRecipeStepShowsCorrectButtons() {
+    @Test
+    public void clickingFirstRecipeStepShowsCorrectButtons() {
         // Click on the first Recipe card found in the MainActivity RecyclerView
         onView(withId(R.id.rv_recipes))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
@@ -44,7 +46,8 @@ public class RecipeStepActivityTest {
         onView(withId(R.id.btn_prev_step)).check(matches(not(isDisplayed())));
     }
 
-    @Test public void clickNextUpdatesButtonsDisplayed() {
+    @Test
+    public void clickNextUpdatesButtonsDisplayed() {
         // Click on the first Recipe card found in the MainActivity RecyclerView
         onView(withId(R.id.rv_recipes))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
@@ -62,7 +65,8 @@ public class RecipeStepActivityTest {
         onView(withId(R.id.btn_prev_step)).check(matches(isDisplayed()));
     }
 
-    @Test public void exoplayerIsDisplayedInStepWithVideo() {
+    @Test
+    public void exoplayerIsDisplayedInStepWithVideo() {
         // Click on the first Recipe card found in the MainActivity RecyclerView
         onView(withId(R.id.rv_recipes))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
@@ -75,7 +79,8 @@ public class RecipeStepActivityTest {
         onView(withClassName(Matchers.equalTo(SimpleExoPlayerView.class.getName()))).check(matches(isDisplayed()));
     }
 
-    @Test public void exoplayerNotDisplayedInStepWithoutVideo() {
+    @Test
+    public void exoplayerNotDisplayedInStepWithoutVideo() {
         // Click on the first Recipe card found in the MainActivity RecyclerView
         onView(withId(R.id.rv_recipes))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));

@@ -11,7 +11,7 @@ import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.udacity.jevonaverill.udacitybakingapprevised.IdlingResource.SimpleIdlingResource;
 import com.udacity.jevonaverill.udacitybakingapprevised.adapter.RecipeAdapter;
@@ -67,7 +67,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeAdapter.R
 
         ButterKnife.bind(this);
         mToolbar.setTitle(mAppName);
-        setActionBar(mToolbar);
+        setSupportActionBar(mToolbar);
 
         mRecyclerView.setHasFixedSize(true);
         GridLayoutManager layoutMgr = new GridLayoutManager(this, 2);
@@ -109,7 +109,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeAdapter.R
         });
     }
 
-    @Override public void onRecipeClick(int position) {
+    @Override
+    public void onRecipeClick(int position) {
         Intent intent = new Intent(this, RecipeDetailActivity.class);
         intent.putExtra(STEP_RECIPE_KEY, mRecipeList.get(position));
         startActivity(intent);

@@ -1,57 +1,41 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <Toolbar android:id="@+id/toolbar_main"
-             android:layout_width="@dimen/toolbar_width"
-             android:layout_height="wrap_content"
-             android:background="?android:attr/colorPrimary"
-             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-             android:visibility="gone"
-             app:layout_constraintLeft_toLeftOf="parent"
-             app:layout_constraintRight_toRightOf="parent"
-             app:layout_constraintTop_toTopOf="parent"/>
+    <android.support.v7.widget.Toolbar android:id="@+id/toolbar_main"
+        android:layout_width="@dimen/toolbar_width" android:layout_height="wrap_content"
+        android:background="?android:attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout android:id="@+id/detail_container_fragment"
-                 android:layout_width="@dimen/detail_fragment_width"
-                 android:layout_height="@dimen/detail_fragment_height"
-                 app:layout_constraintBottom_toBottomOf="parent"
-                 app:layout_constraintLeft_toLeftOf="parent"
-                 app:layout_constraintRight_toRightOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-                 tools:layout="@layout/fragment_step_detail"/>
+        android:layout_width="@dimen/detail_fragment_width"
+        android:layout_height="@dimen/detail_fragment_height"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        tools:layout="@layout/fragment_step_detail" />
 
-    <Button android:id="@+id/btn_prev_step"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Previous"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            tools:text="Previous"/>
+    <Button android:id="@+id/btn_prev_step" style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Previous" android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="Previous" />
 
-    <Button android:id="@+id/btn_add_to_widget"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add to widget"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/btn_prev_step"
-            app:layout_constraintRight_toLeftOf="@+id/btn_next_step"
-            tools:text="Add to widget"/>
+    <Button android:id="@+id/btn_add_to_widget" style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Add to widget" android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btn_prev_step"
+        app:layout_constraintRight_toLeftOf="@+id/btn_next_step" tools:text="Add to widget" />
 
-    <Button android:id="@+id/btn_next_step"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:text="Next"/>
+    <Button android:id="@+id/btn_next_step" style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Next"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" tools:text="Next" />
 
 </android.support.constraint.ConstraintLayout>

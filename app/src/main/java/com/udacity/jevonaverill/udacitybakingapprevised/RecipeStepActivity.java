@@ -11,12 +11,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.udacity.jevonaverill.udacitybakingapprevised.fragment.StepDetailFragment;
 import com.udacity.jevonaverill.udacitybakingapprevised.fragment.VideoFragment;
@@ -82,8 +82,8 @@ public class RecipeStepActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: recipe = " + mRecipe.getName());
         }
         mToolbar.setTitle(mRecipe.getSteps().get(selectedIndex).getShortDescription());
-        setActionBar(mToolbar);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setButtonVisibility(selectedIndex);
         showStepDetails(selectedIndex);
     }
@@ -96,11 +96,6 @@ public class RecipeStepActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
     }
 
     @Override
